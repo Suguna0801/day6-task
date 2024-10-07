@@ -1,0 +1,30 @@
+body{
+    max-width: 250px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
+}
+.heading{
+    text-align: center;
+
+}
+label.head{
+    text-align: center;
+    margin-left: 50px;
+    font-size: medium;
+}
+input{
+    width: 90%;
+    padding: 5px;
+}
+button{
+    margin-left: 60px;
+    background-color: green;
+    padding: 5px;
+}
+.result{
+    margin-left: 30px;
+    text-align: center;
+}

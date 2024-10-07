@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI</title>
+    <link rel="stylesheet" href="interest.css">
+</head>
+<body>
+    <h3 class="heading">Advanced Simple Interest Calculator</h3>
+    <div>
+        <label for="amount" class="head">Principal Amount:</label><br><br>
+        <input type="text" id="amount" name="amount" placeholder="Enter principal amount"><br><br>
+    </div>
+    <div>
+        <label for="interest" class="head">Rate of interest(%):</label><br><br>
+        <input type="text" id="interest" name="interest" placeholder="Enter interest rate"><br><br>
+    </div>
+    <div>
+        <label for="time" class="head">Time (Years):</label><br><br>
+        <input type="text" id="time" name="time" placeholder="Enter time in years"><br><br>
+    </div>
+    <div class="button">
+        <button type="submit" onclick="convert()">Calculate interest</button>
+    </div><br>
+    <div class="result">
+        <div id="result1"><strong>Interest:</strong></div><br>
+        <div id="result2"><strong>Total Amount:</strong></div><br>
+        <div id="result3"><strong>Additional Information:</strong></div><br>
+    </div>
+
+    <script>
+        function convert() {
+            const amount = parseFloat(document.getElementById("amount").value);
+            const time = parseFloat(document.getElementById("time").value);
+            let interest = 0;
+            if (isNaN(amount) || isNaN(time) || amount <= 0 || time <= 0) {
+                document.getElementById("result3").innerHTML = "Please enter valid positive numbers for all fields.";
+                return;
+            }
+            if (amount < 500 || amount > 10000) {
+                document.getElementById("result3").innerHTML = "Principal amount must be between $500 and $10,000.";
+                return;
+            }
+            if (amount < 1000) {
+                interest = 5;  
+            } else if (amount >= 1000 && amount <= 5000) {
+                interest = 7;  
+            } else {
+                interest = 10;  
+            }
+            if (time > 5) {
+                interest = interest+ 2;
+            }
+            const totalInterest = (amount * interest * time) / 100;
+            const totalAmount = amount + totalInterest;
+            document.getElementById("result1").innerHTML = `Interest: $${totalInterest.toFixed(2)}`;
+            document.getElementById("result2").innerHTML = `Total Amount: $${totalAmount.toFixed(2)}`;
+            document.getElementById("result3").innerHTML = `Interest Rate: ${interest}% <br><br>     Calculation Successful!`;
+        }
+    </script>
+</body>
+</html>
